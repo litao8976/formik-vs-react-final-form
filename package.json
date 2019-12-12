@@ -6,6 +6,12 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@storybook/addon-actions": "^5.2.3",
+    "@storybook/addon-knobs": "^5.2.3",
+    "@storybook/addon-links": "^5.2.3",
+    "@storybook/addons": "^5.2.3",
+    "@storybook/react": "^5.2.3",
+    "cross-env": "^6.0.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "eslint": "^6.7.2",
@@ -39,15 +45,17 @@
   },
   "homepage": "https://hosseintalebi.github.io/formik-vs-react-final-form",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "coverage": "react-scripts test --coverage --watchAll=false",
+    "test": "react-scripts test --coverage --collectCoverage=true --watchAll=false",
+    "test:coverage": "npm run test -- --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint src/test/*.jsx --ext '.js,.jsx' --config .eslintrc",
     "lint:fix": "npm run lint --fix",
-    "precommit": "lint-staged"
+    "test:staged": "cross-env CI=true react-scripts test --env=jsdom --findRelatedTests",
+    "ci": "npm lint && cross-env CI=true npm test --coverage",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -66,12 +74,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "cross-env CI=true lint-staged"
     }
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "react-scripts test --coverage --findRelatedTests --watchAll=false",
+      "npm run test:staged",
       "git add"
     ]
   },
@@ -85,10 +93,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 60,
-        "functions": 50,
-        "lines": 50,
-        "statements": 50
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
       }
     }
   }
