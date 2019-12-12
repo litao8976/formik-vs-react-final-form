@@ -61,13 +61,17 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "react-scripts test --coverage --findRelatedTests --watchAll=false",
+      "react-scripts test --coverage --watchAll=false",
       "git add"
     ]
   },
   "jest": {
     "collectCoverageFrom": [
       "src/test/*.{js,jsx}"
+    ],
+    "coverageReporters":[
+       "html",
+       "text-summary"
     ],
     "coverageThreshold": {
       "global": {
