@@ -47,7 +47,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage --collectCoverage=true --watchAll=false",
+    "test": "react-scripts test --coverage --collectCoverage=true --watchAll=false -u",
     "test:coverage": "npm run test -- --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint src/test/*.jsx --ext '.js,.jsx' --config .eslintrc",
