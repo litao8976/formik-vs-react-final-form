@@ -61,7 +61,7 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "react-scripts test --coverage --watchAll=false",
+      "react-scripts test --coverage --findRelatedTests --watchAll=false",
       "git add"
     ]
   },
