@@ -6,7 +6,6 @@ describe('Button', () => {
     it('matches snapshot', () => {
         const component = renderer.create((
             <Button />
-            //
         ))
         expect(component.toJSON()).toMatchSnapshot()
     })
