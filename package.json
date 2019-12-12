@@ -61,7 +61,6 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "npm run lint --fix",
       "react-scripts test --env=jsdom --bail --coverage --findRelatedTests --watchAll=false",
       "git add"
     ]
